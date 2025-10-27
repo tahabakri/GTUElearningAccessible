@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* LIGHT MODE - GTU Purple Palette */
+    --background: 0 0% 100%;       /* #FFFFFF */
+    --foreground: 0 0% 9%;         /* #161616 */
+    
+    --card: 0 0% 98%;              /* #FAFAF8 */
+    --card-foreground: 0 0% 9%;    /* #161616 */
+    
+    --popover: 0 0% 100%;          /* #FFFFFF */
+    --popover-foreground: 0 0% 9%; /* #161616 */
+    
+    --primary: 262 83% 58%;        /* #8B5CF6 (GTU Purple) */
+    --primary-foreground: 60 9% 98%; /* #FAFAF8 */
+    
+    --secondary: 0 0% 93%;         /* #EBEBEB */
+    --secondary-foreground: 0 0% 9%;
+    
+    --muted: 0 2% 94%;             /* #F0F0F0 */
+    --muted-foreground: 0 0% 45%;  /* #737373 */
+    
+    --accent: 262 15% 94%;         /* #F3E8FF (Light Purple) */
+    --accent-foreground: 0 0% 9%;
+    
+    --destructive: 0 84% 60%;      /* #EF4444 */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89%;            /* #E3E3E3 */
+    --input: 0 0% 75%;             /* #BFBFBF */
+    --ring: 262 83% 58%;           /* #8B5CF6 */
+    
+    --radius: 0.5rem;
+
+    /* GTU Brand Defaults (Purple Theme) */
+    --header-bg: #8B5CF6;
+    --header-fg: #FAFAF8;
+    --hero-bg: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    --hero-fg: #FAFAF8;
+    --footer-bg: #8B5CF6;
+    --footer-fg: #FAFAF8;
+    --announcement-bg: #FAFAF8;
+
+    /* Typography */
+    --font-sans: 'Noto Sans Georgian', sans-serif;
+  }
+
+  .high-contrast {
+    /* Clean / High Contrast Mode */
+    --header-bg: #ffffff;
+    --header-fg: #000000;
+    --hero-bg: #f3f4f6;
+    --hero-fg: #000000;
+    --footer-bg: #f8fafc;
+    --footer-fg: #000000;
+    --announcement-bg: #ffffff;
+    
+    /* Ensure maximum contrast for text */
+    --foreground: 0 0% 0%;
+    --muted-foreground: 0 0% 20%;
+  }
+
+  .dark {
+    /* DARK MODE */
+    --background: 222 47% 11%;     /* #0f172a (Slate 900) */
+    --foreground: 210 40% 98%;     /* #f8fafc (Slate 50) */
+    
+    --card: 222 47% 14%;           /* #1e293b (Slate 800) */
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 11%;        /* #0f172a */
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 262 83% 65%;        /* Brighter Purple for dark mode */
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 217 33% 17%;      /* #1e293b */
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 33% 17%;          /* #334155 (Slate 700) */
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 262 30% 20%;         /* Dark Purple Accent */
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62% 50%;      /* Brighter red for visibility */
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 25%;         /* Visible border */
+    --input: 217 33% 30%;
+    --ring: 262 83% 65%;
+
+    /* Dark Mode Brand Colors - Purple gradient on dark */
+    --header-bg: #1e1b4b;          /* Indigo 950 */
+    --header-fg: #f8fafc;
+    --hero-bg: linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #8b5cf6 100%);
+    --hero-fg: #f8fafc;
+    --footer-bg: #0f0d1a;          /* Very dark purple */
+    --footer-fg: #e2e8f0;
+    --announcement-bg: #1e293b;    /* Slate 800 */
+  }
+  
+  /* Dark mode with high contrast */
+  .dark.high-contrast {
+    --header-bg: #000000;
+    --header-fg: #ffffff;
+    --hero-bg: #1a1a2e;
+    --hero-fg: #ffffff;
+    --footer-bg: #000000;
+    --footer-fg: #ffffff;
+    --announcement-bg: #1a1a2e;
+    
+    --foreground: 0 0% 100%;
+    --muted-foreground: 0 0% 80%;
+    --border: 0 0% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* HIGH VISIBILITY FOCUS RING (HCI: Visibility of System Status) */
+  *:focus-visible {
+    outline: 3px solid #F59E0B !important; /* Bright Orange/Yellow */
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ============================================
+   COLORBLIND SIMULATION FILTERS
+   WCAG 1.4.1: Use of Color - Don't rely on color alone
+   ============================================ */
+
+/* Monochrome (Achromatopsia) - Complete color blindness */
+.colorblind-monochrome {
+  filter: grayscale(100%);
+}
+
+/* Deuteranopia (Green-Blind) - Most common, ~6% of males */
+.colorblind-deuteranopia {
+  filter: url('#deuteranopia-filter');
+}
+
+/* Protanopia (Red-Blind) - ~2% of males */
+.colorblind-protanopia {
+  filter: url('#protanopia-filter');
+}
+
+/* Tritanopia (Blue-Blind) - Rare, ~0.01% */
+.colorblind-tritanopia {
+  filter: url('#tritanopia-filter');
+}
+
+/* Fallback CSS filters if SVG not supported */
+@supports not (filter: url('#deuteranopia-filter')) {
+  .colorblind-deuteranopia {
+    filter: sepia(0.5) saturate(1.2) hue-rotate(-20deg);
+  }
+  .colorblind-protanopia {
+    filter: sepia(0.8) saturate(0.8) hue-rotate(-10deg);
+  }
+  .colorblind-tritanopia {
+    filter: sepia(0.5) saturate(1.5) hue-rotate(30deg);
+  }
+}

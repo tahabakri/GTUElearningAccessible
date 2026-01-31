@@ -48,7 +48,7 @@ This project was an exercise in applying HCI theory to a real interface:
 - **Fitts's Law** — large, easily‑targeted navigation controls.
 - **Design for all** — accessibility is a first‑class, always‑visible control surface, not a buried setting.
 
-The visual and UX system is documented in [`docs/design_guidelines.md`](docs/design_guidelines.md).
+The full written case study — heuristic evaluation, WCAG analysis, user scenarios, and impact estimates — is in [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md), and the visual/UX system is documented in [`docs/design_guidelines.md`](docs/design_guidelines.md).
 
 ---
 
